@@ -16,6 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="css/landing-page.css" rel="stylesheet">
+    <link href="css/bootstrap-social.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -115,10 +116,10 @@
                 <p>Cadastre-se na nossa lista de emails para saber sobre o aplicativo e sua versão final.</p>
                 <br/>
                 <div class="col-lg-6 col-lg-offset-2">
-                    <input type="email" class="form-control" name="email" placeholder="Insira seu e-mail" required>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Insira seu e-mail" required>
                 </div>
                 <div class="col-lg-1">
-                    <button class="btn btn-default">Cadastrar</button>
+                    <button class="btn btn-default" onclick="postContactToGoogle();">Cadastrar</button>
                 </div>
             </div>
         </div>
@@ -199,21 +200,51 @@
                     <h2>QUER CONHECER OS LOUCOS POR TRÁS DISSO?</h2>
                 </div>
                 <div class="col-md-4 text-center">
-                    <img class="img-circle" src="http://placehold.it/140x140">
+                    <img class="img-circle" src="img/thiago.png">
                     <h3>Thiago Ferreira</h3>
-                    <h5>Developer</h5>
+                    <div class="row">
+                        <a class="btn btn-social-icon btn-twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-linkedin">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </div>
                     <!--<p><a class="btn btn-default" href="#">View details »</a></p>-->
                 </div>
                 <div class="col-md-4 text-center">
-                    <img class="img-circle" src="http://placehold.it/140x140">
+                    <img class="img-circle" src="img/guilherme.jpg">
                     <h3>Guilherme Santos</h3>
-                    <h5>Developer</h5>
+                    <div class="row">
+                        <a class="btn btn-social-icon btn-twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-linkedin">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </div>
                     <!--<p><a class="btn btn-default" href="#">View details »</a></p>-->
                 </div>
                 <div class="col-md-4 text-center">
-                    <img class="img-circle" src="http://placehold.it/140x140">
+                    <img class="img-circle" src="img/laercio.png">
                     <h3>Laércio Vitorino</h3>
-                    <h5>Developer</h5>
+                    <div class="row">
+                        <a class="btn btn-social-icon btn-twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-linkedin">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </div>
                     <!--<p><a class="btn btn-default" href="#">View details »</a></p>-->
                 </div>
             </div><!-- /.row -->
@@ -221,15 +252,35 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-4 text-center">
-                    <img class="img-circle" src="http://placehold.it/140x140">
+                    <img class="img-circle" src="img/fernando.png">
                     <h3>Fernando Almeida</h3>
-                    <h5>Designer UI</h5>
+                    <div class="row">
+                        <a class="btn btn-social-icon btn-twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-linkedin">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </div>
                     <!--<p><a class="btn btn-default" href="#">View details »</a></p>-->
                 </div>
                 <div class="col-md-4 text-center">
-                    <img class="img-circle" src="http://placehold.it/140x140">
+                    <img class="img-circle" src="img/augusto.png">
                     <h3>Augusto César</h3>
-                    <h5>Designer UX</h5>
+                    <div class="row">
+                        <a class="btn btn-social-icon btn-twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-linkedin">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </div>
                     <!--<p><a class="btn btn-default" href="#">View details »</a></p>-->
                 </div>
             </div>
@@ -248,7 +299,7 @@
             <h2>CONTATO</h2>
             <div class="row">
                 <h4>Nos tornamos melhor a cada feedback seu.</h4>
-                <h4>Nos envie um email com idéias, críticas ou apenas ou apenas diga "olá" :)</h4>
+                <h4>Nos envie um email com idéias, críticas ou apenas diga "olá" :)</h4>
             </div>
             <br/>
             <div class="row">
@@ -325,6 +376,37 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
+    <script type="text/javascript">
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+        function postContactToGoogle(){
+            var email = $('#email').val();
+            if ((email !== "")) {
+                $.ajax({
+                    url: "https://docs.google.com/forms/d/1HwvOqzJFFzPB1qAcAbdEc6f7y2VqpvMpRyb9-5OIwBY/formResponse",
+                    data: {"entry.1589493456" : email},
+                    type: "POST",
+                    dataType: "xml",
+                    statusCode: {
+                        0: function (){
+                            console.log($('#email').text());
+                            //Success message
+                        },
+                        200: function (){
+                            console.log($('#email').text());
+                            //Success Message
+                        }
+                    }
+                });
+            }
+            else {
+                //Error message
+            }
+        }
+    </script>
+
     <script>
         function switcheffect(){
             $("#btnemail").toggle();
@@ -335,11 +417,17 @@
     <script>
 
         $( document ).ready(function() {
-
+            var anterior =null;
+            var atual;
             $('ul.nav a').bind('click',function(event){
                 var $anchor = $(this);
+                atual = $anchor;
+                if(anterior!=null){
+                    anterior.parent().attr('class','none');
+                }
+                atual.parent().attr('class','active');
                 $('html, body').stop().animate({
-                    scrollTop: $($anchor.attr('href')).position().top
+                    scrollTop: $(atual.attr('href')).position().top
                 }, 1000);
                 /*
                  if you don't want to use the easing effects:
@@ -347,6 +435,7 @@
                  scrollTop: $($anchor.attr('href')).offset().top
                  }, 1000);
                  */
+                anterior = $anchor;
                 event.preventDefault();
             });
 
@@ -387,7 +476,7 @@
                         });
                         if (i == images.length)
                             i = 0;
-                    }, 6000);
+                    }, 8000);
                 });
             }
         });
