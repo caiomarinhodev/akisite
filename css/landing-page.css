@@ -120,6 +120,24 @@ h6 {
     margin-bottom: 20px;
 }
 
+.section-contato{
+    text-align: center;
+    background-color: #47556b;
+}
+
+.section-contato h2{
+    color: #ffffff;
+}
+
+.section-contato h4{
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.section-contato button{
+
+}
+
 .intro-divider {
     width: 400px;
     border-top: 1px solid #f8f8f8;
