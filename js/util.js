@@ -1,0 +1,1 @@
+function switcheffect(){$("#btnemail").toggle(),$("#formemail").slideToggle()}function closepop(){$("#email").val("")}

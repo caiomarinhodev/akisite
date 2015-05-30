@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
 
@@ -119,7 +119,26 @@
                     <input type="email" class="form-control" name="email" id="email" placeholder="Insira seu e-mail" required>
                 </div>
                 <div class="col-lg-1">
-                    <button class="btn btn-default" onclick="postContactToGoogle();">Cadastrar</button>
+                    <button class="btn btn-default" onclick="postContactToGoogle();" data-toggle="modal" data-target="#myModal">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <center><h2 class="modal-title" id="myModalLabel">Muito Obrigado!</h2></center>
+                    </div>
+                    <div class="modal-body popup">
+                        Em breve estaremos enviando um email com mais informações sobre o aplicativo.
+                    </div>
+                    <div class="modal-footer">
+                        <center><button type="button" class="btn btn-default" onclick="closepop();" data-dismiss="modal" >Fechar</button></center>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -308,23 +327,23 @@
                         <fieldset>
                             <div class="form-group">
                                 <div class="col-md-10 col-md-offset-1">
-                                    <input id="fname" name="name" type="text" placeholder="Nome Completo" class="form-control" required>
+                                    <input id="nome" name="name" type="text" placeholder="Nome Completo" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-10 col-md-offset-1">
-                                    <input id="mail" name="email" type="text" placeholder="E-mail" class="form-control" required>
+                                    <input id="campoemail" name="email" type="text" placeholder="E-mail" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-10 col-md-offset-1">
-                                    <textarea class="form-control" id="message" name="message" placeholder="Digite sua mensagem..." rows="7"></textarea>
+                                    <textarea class="form-control" id="mensagem" name="message" placeholder="Digite sua mensagem..." rows="7"></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                                    <button type="submit" class="btn btn-primary btn-lg" onclick="postFormToGoogle();">Enviar</button>
                                 </div>
                             </div>
                         </fieldset>
@@ -353,18 +372,18 @@
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#about">About</a>
+                            <a href="#inscrever">Inscrever-se</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#services">Services</a>
+                            <a href="#features">Features</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#contact">Contact</a>
+                            <a href="#contato">Contato</a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                    <p class="copyright text-muted small">Copyright &copy; Aki 2015. All Rights Reserved</p>
                 </div>
             </div>
         </div>
@@ -376,112 +395,14 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
-    <script type="text/javascript">
-        function validateEmail(email) {
-            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(email);
-        }
-        function postContactToGoogle(){
-            var email = $('#email').val();
-            if ((email !== "")) {
-                $.ajax({
-                    url: "https://docs.google.com/forms/d/1HwvOqzJFFzPB1qAcAbdEc6f7y2VqpvMpRyb9-5OIwBY/formResponse",
-                    data: {"entry.1589493456" : email},
-                    type: "POST",
-                    dataType: "xml",
-                    statusCode: {
-                        0: function (){
-                            console.log($('#email').text());
-                            //Success message
-                        },
-                        200: function (){
-                            console.log($('#email').text());
-                            //Success Message
-                        }
-                    }
-                });
-            }
-            else {
-                //Error message
-            }
-        }
-    </script>
+    <script src="js/engenhoca.js"></script>
+
+    <script src="js/util.js"></script>
+
+    <script src="js/efeitos.js" type="text/javascript" charset="iso-8859-1"></script>
 
     <script>
-        function switcheffect(){
-            $("#btnemail").toggle();
-            $("#formemail").slideToggle();
-        }
-    </script>
-
-    <script>
-
-        $( document ).ready(function() {
-            var anterior =null;
-            var atual;
-            $('ul.nav a').bind('click',function(event){
-                var $anchor = $(this);
-                atual = $anchor;
-                if(anterior!=null){
-                    anterior.parent().attr('class','none');
-                }
-                atual.parent().attr('class','active');
-                $('html, body').stop().animate({
-                    scrollTop: $(atual.attr('href')).position().top
-                }, 1000);
-                /*
-                 if you don't want to use the easing effects:
-                 $('html, body').stop().animate({
-                 scrollTop: $($anchor.attr('href')).offset().top
-                 }, 1000);
-                 */
-                anterior = $anchor;
-                event.preventDefault();
-            });
-
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                console.log("This is mobile device!");
-
-            } else {
-                console.log("Isn't mobile device!");
-                $(window).load(function () {
-                    var i = 0;
-                    var images = ['img/mapa.png', 'img/cel3.png', 'img/cel1.png'];
-                    var backs = ['#47556b', '#ebebeb', '#ebebeb'];
-                    var colort = ['#ffffff', '#49576e', '#49576e'];
-                    var colorp = ['#dedede', '#a4b0c0', '#a4b0c0'];
-                    var titulos = ['CONHEÇA PESSOAS DO MUNDO TODO','EM BREVE ...','CONVERSE COM PESSOAS AO SEU REDOR'];
-                    var textos = ['Conheça novas culturas e pratique outros idiomas. Converse com pessoas de qualquer parte do mundo',
-                    'Ofereça drinks à alguém, seja avisado de promoções ao passar do lado de uma loja. Não perca nenhuma oportunidade',
-                    'Seja num evento, numa festa ou na sua vizinhança, converse com pessoas que estão perto de você. Conheça o Aki, a melhor forma de quebrar o gelo e começar uma conversa.'];
-                    var background = $('.intro-header');
-                    var title = $('#title');
-                    var text = $('#text');
-                    var image = $('#imagem');
-                    //Initial Background image setup
-                    background.css('background-color', '#ebebeb');
-
-                    //Change image at regular intervals
-                    setInterval(function () {
-                        background.fadeOut(1000, function () {
-                            background.css('background-color', backs [i] );
-                            image.attr('src', images[i]);
-                            background.fadeIn(1000);
-                            title.css('color', colort[i]);
-                            title.text(titulos[i]);
-                            text.css('color',colorp[i]);
-                            text.text(textos[i]);
-                            title.text();
-                            i++;
-                        });
-                        if (i == images.length)
-                            i = 0;
-                    }, 8000);
-                });
-            }
-        });
-
-
+        $(document).ready(function(){/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)?console.log("This is mobile device!"):(console.log("Isn't mobile device!"),$(window).load(function(){var e=0,o=["img/mapa.png","img/cel3.png","img/cel1.png"],a=["#47556b","#ebebeb","#ebebeb"],n=["#ffffff","#49576e","#49576e"],r=["#dedede","#a4b0c0","#a4b0c0"],s=["CONHEÇA PESSOAS DO MUNDO TODO","EM BREVE ...","CONVERSE COM PESSOAS AO SEU REDOR"],t=["Conheça novas culturas e pratique outros idiomas. Converse com pessoas de qualquer parte do mundo","Ofereça drinks à alguém, seja avisado de promoções ao passar do lado de uma loja. Não perca nenhuma oportunidade","Seja num evento, numa festa ou na sua vizinhança, converse com pessoas que estão perto de você. Conheça o Aki, a melhor forma de quebrar o gelo e começar uma conversa."],i=$(".intro-header"),c=$("#title"),d=$("#text"),u=$("#imagem");i.css("background-color","#ebebeb"),setInterval(function(){i.fadeOut(1e3,function(){i.css("background-color",a[e]),u.attr("src",o[e]),i.fadeIn(1e3),c.css("color",n[e]),c.text(s[e]),d.css("color",r[e]),d.text(t[e]),c.text(),e++}),e==o.length&&(e=0)},8e3)}))});
     </script>
 
 </body>
